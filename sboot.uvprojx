@@ -537,6 +537,11 @@
               <FileType>1</FileType>
               <FilePath>.\sboot\dbg.c</FilePath>
             </File>
+            <File>
+              <FileName>sboot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sboot\sboot.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

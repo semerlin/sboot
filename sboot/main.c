@@ -6,6 +6,7 @@
 * See the COPYING file for the terms of usage and distribution.
 */
 #include "stm32f10x.h"
+#include "dbg.h"
 
 /**
  * @brief config board hardware
@@ -20,5 +21,6 @@ static void board_cfg(void)
 int main(int argc, char **argv)
 {
     board_cfg();
+    dbg_init();
     return 0;
 }
