@@ -155,6 +155,8 @@ void sboot_upgrade(void)
 void sboot_reboot(void)
 {
     TRACE("rebooting...");
+    __set_FAULTMASK(1);
+    NVIC_SystemReset();
 }
 
 void sboot_run_app(void)
