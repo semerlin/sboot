@@ -44,7 +44,7 @@ void dbg_init(void)
 static void dbg_putchar(char data)
 {
     USART_SendData(USART3, data);
-    while (RESET == USART_GetFlagStatus(USART1, USART_FLAG_TXE));
+    while (RESET == USART_GetFlagStatus(USART3, USART_FLAG_TXE));
 }
 
 static void dbg_putstring(const char *string, uint32_t length)
