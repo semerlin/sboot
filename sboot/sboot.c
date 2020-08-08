@@ -15,6 +15,7 @@
 #define BLOCK_SIZE                  2048
 #define FAILED_TRY_COUNT            3
 
+typedef void (*app_entry_t)(void);
 static uint32_t upgrade_buffer[BLOCK_SIZE / 4];
 
 typedef struct
@@ -37,13 +38,13 @@ bool sboot_upgrade_image_check(void)
     ota_image_header_t header = *(volatile ota_image_header_t *)UPGRADE_IMAGE_HEADER_ADDR;
     if (UPGRADE_MAGIC != header.magic)
     {
-        TRACE("no valid image");
+        TRACE("no valid upgrade image");
         return false;
     }
 
     if (!header.not_obsolete)
     {
-        TRACE("image obsoleted!");
+        TRACE("upgrade image obsoleted!");
         return false;
     }
 
@@ -51,11 +52,11 @@ bool sboot_upgrade_image_check(void)
     uint32_t checksum = sboot_image_checksum_calc(header.image_size);
     if (header.checksum != checksum)
     {
-        TRACE("image checksum error(0x%08x-0x%08x)!", header.checksum, checksum);
+        TRACE("upgrade image checksum error(0x%08x-0x%08x)!", header.checksum, checksum);
         return false;
     }
 
-    TRACE("valid image find, size %d", header.image_size);
+    TRACE("valid upgrade image find, size %d", header.image_size);
     return true;
 }
 
@@ -159,5 +160,23 @@ void sboot_reboot(void)
 void sboot_run_app(void)
 {
     TRACE("run app...");
+
+    /* Check if valid stack address (RAM address) then jump to user application */
+    if (((*(__IO uint32_t *)APP_IMAGE_ADDR) & 0x2FFE0000) == 0x20000000)
+    {
+        /* disable irq */
+        __disable_irq();
+        /* get user application */
+        uint32_t app_entry_addr = *(__IO uint32_t *)(APP_IMAGE_ADDR + 4);
+        app_entry_t app_entry = (app_entry_t)app_entry_addr;
+        /* initialize user application's Stack Pointer */
+        __set_MSP(*(__IO uint32_t *)APP_IMAGE_ADDR);
+        /* jump to user application */
+        app_entry();
+    }
+    else
+    {
+        TRACE("invalid app image address: 0x%08x", APP_IMAGE_ADDR);
+    }
 }
 
