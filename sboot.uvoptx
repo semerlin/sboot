@@ -183,17 +183,17 @@
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>(QueueHandle_t *)chars_tx</ItemText>
+          <ItemText>pserial</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>pserial</ItemText>
+          <ItemText>(QueueHandle_t)0x20000370</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>(QueueHandle_t)0x20000370</ItemText>
+          <ItemText>buf</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -238,12 +238,6 @@
       <pszMrulep></pszMrulep>
       <pSingCmdsp></pSingCmdsp>
       <pMultCmdsp></pMultCmdsp>
-      <SystemViewers>
-        <Entry>
-          <Name>System Viewer\TIM4</Name>
-          <WinId>35905</WinId>
-        </Entry>
-      </SystemViewers>
     </TargetOption>
   </Target>
 
@@ -626,6 +620,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\sboot\sboot.c</PathWithFileName>
       <FilenameWithoutPath>sboot.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>3</GroupNumber>
+      <FileNumber>31</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\sboot\crc32.c</PathWithFileName>
+      <FilenameWithoutPath>crc32.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

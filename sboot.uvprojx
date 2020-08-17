@@ -275,7 +275,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x8000000</StartAddress>
-                <Size>0x80000</Size>
+                <Size>0x4000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -541,6 +541,11 @@
               <FileName>sboot.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\sboot\sboot.c</FilePath>
+            </File>
+            <File>
+              <FileName>crc32.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\sboot\crc32.c</FilePath>
             </File>
           </Files>
         </Group>

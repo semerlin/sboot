@@ -27,8 +27,14 @@ int main(int argc, char **argv)
     /* check ota image */
     if (sboot_upgrade_image_check())
     {
-        sboot_upgrade();
-        sboot_reboot();
+        if (sboot_upgrade())
+        {
+            sboot_reboot();
+        }
+        else
+        {
+            sboot_run_app();
+        }
     }
     else
     {
