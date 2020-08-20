@@ -12,8 +12,6 @@
 
 BEGIN_DECLS
 
-bool sboot_upgrade_image_check(void);
-bool sboot_upgrade(void);
 void sboot_reboot(void);
 void sboot_run_app(void);
 

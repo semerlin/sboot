@@ -8,6 +8,7 @@
 #include "stm32f10x.h"
 #include "dbg.h"
 #include "sboot.h"
+#include "upgrade_flash.h"
 
 /**
  * @brief config board hardware
@@ -24,10 +25,10 @@ int main(int argc, char **argv)
     board_cfg();
     dbg_init();
 
-    /* check ota image */
-    if (sboot_upgrade_image_check())
+    /* check image */
+    if (flash_image_check())
     {
-        if (sboot_upgrade())
+        if (flash_image_upgrade())
         {
             sboot_reboot();
         }

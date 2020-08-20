@@ -13,9 +13,9 @@
 #define APP_IMAGE_ADDR                          0x08004000
 #define APP_IMAGE_SIZE                          0x0003E000
 #define UPGRADE_IMAGE_HEADER_ADDR               0x08042000
-#define UPGRADE_IMAGE_HEADER_SIZE               0x00000008
-#define UPGRADE_IMAGE_ADDR                      0x08042008
-#define UPGRADE_IMAGE_SIZE                      0x0003DFF8
+#define UPGRADE_IMAGE_HEADER_SIZE               0x00000800
+#define UPGRADE_IMAGE_ADDR                      0x08042800
+#define UPGRADE_IMAGE_SIZE                      0x0003D800
 
 
 #endif /* _FLASH_MAP_H_ */
